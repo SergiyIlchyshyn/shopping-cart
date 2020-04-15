@@ -1,11 +1,13 @@
 var mongoose = require('mongoose');
+//  Объявляем схему,  как свойство mongoose
 var Schema = mongoose.Schema;
 
-var schema = new Schema({
-    imagePath: { type: String, require: true },
-    title: { type: String, require: true },
-    description: { type: String, require: true },
-    price: { type: Number, require: true }
-});
+var productSchema = new Schema({
+    imagePath: { type: String, required: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true }
+}, { collection: 'shopping' });
 
-module.exports = mongoose.model('Product', schema);
+// Создаем модель, с помощью которой на основе productSchema создаем документы
+module.exports = mongoose.model('Product', productSchema);
