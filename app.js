@@ -2,13 +2,14 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 const Handlebars = require('handlebars');
 var expressHbs = require('express-handlebars');
 // Import function exported by newly installed node modules.
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+var session = require('express-session');
 
-// var bodyParser = require('body-parser');
 // Подключаем mongoose
 var mongoose = require('mongoose');
 
@@ -40,6 +41,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({ secret: 'mysupersecret', resave: false, saveUninitialized: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
