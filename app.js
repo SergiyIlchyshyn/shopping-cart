@@ -9,6 +9,8 @@ var expressHbs = require('express-handlebars');
 // Import function exported by newly installed node modules.
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 var session = require('express-session');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 // Подключаем mongoose
 var mongoose = require('mongoose');
@@ -41,7 +43,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ secret: 'mysupersecret', resave: false, saveUninitialized: false }));
+app.use(session({
+    secret: 'mysupersecret',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
