@@ -1,18 +1,18 @@
-{{# each products }}
+
     <div class="row">
         <div class="card-items mt-3 mb-3">
-            {{# each this}}
+            {{# each products}}
             <div class="col-xs-12 col-sm-6 col-lg-4 mb-4">
                 <div class="card shadow-sm">
-                    <img src="{{ this.imagePath }}"
+                    <img src="{{ imagePath }}"
                         class="card-img-top img-thumbnail" alt="Gothic 3">
                     <div class="card-body">
                         <div class="card-content">
-                            <h5 class="card-title">{{ this.title }}</h5>
-                            <p class="card-text mb-3">{{ this.description }}</p>
+                            <h5 class="card-title">{{ title }}</h5>
+                            <p class="card-text mb-3">{{ description }}</p>
                         </div>
                         <div class="card-foot">
-                            <span class="price">${{ this.price }}</span>
+                            <span class="price">${{ price }}</span>
                             <a href="#" class="btn btn-success">Add</a>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
             {{/each}}
         </div>
     </div>
-{{/each}}
+
 
 {{!-- <div class="row">
     <div class="card-items mt-3 mb-3">

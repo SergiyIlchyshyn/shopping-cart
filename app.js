@@ -3,8 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const Handlebars = require('handlebars');
 var expressHbs = require('express-handlebars');
-var bodyParser = require('body-parser');
+// Import function exported by newly installed node modules.
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+
+// var bodyParser = require('body-parser');
 // Подключаем mongoose
 var mongoose = require('mongoose');
 
@@ -25,7 +29,11 @@ mongoose.connect('mongodb://localhost:27017/shopping', {
     });
 
 // view engine setup
-app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
+app.engine('.hbs', expressHbs({
+    defaultLayout: 'layout',
+    extname: '.hbs',
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
 app.set('view engine', '.hbs');
 
 app.use(logger('dev'));
