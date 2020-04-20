@@ -1,3 +1,10 @@
+.alert p {
+    margin-bottom: 0;
+}
+
+
+/* =========================== */
+
 .card-items {
     display: flex;
     flex-wrap: wrap;

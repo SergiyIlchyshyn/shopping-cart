@@ -31,6 +31,8 @@ mongoose.connect('mongodb://localhost:27017/shopping', {
         console.log(Error, err.message);
     });
 
+require('./config/passport');
+
 // view engine setup
 app.engine('.hbs', expressHbs({
     defaultLayout: 'layout',
