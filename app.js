@@ -22,10 +22,9 @@ var userRoutes = require('./routes/user');
 var app = express();
 
 // Для подключения к БД shopping применяем метод connect()
-mongoose.connect('mongodb://localhost:27017/shopping', {
+// mongoose.connect('mongodb://localhost:27017/shopping');
+mongoose.connect('mongodb+srv://student:Start2020@cluster0-qse6h.mongodb.net/sample-database', {
         useNewUrlParser: true,
-        // useFindAndModify: false,
-        // useCreateIndex: true,
         useUnifiedTopology: true
     })
     .then(() => console.log('DB Connected!'))
