@@ -26,9 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/add-product', function(req, res, next) {
-    res.render('shop/add-product', {
-        title: 'Create'
-    });
+    res.render('shop/add-product', { title: 'Create' });
 });
 //отримати дані і зберегти їх
 router.post('/add-product', function(req, res, next) {
@@ -38,9 +36,7 @@ router.post('/add-product', function(req, res, next) {
 });
 //отримати дані і зберегти їх
 router.get('/edit-product/:id', function(req, res, next) {
-    res.render('shop/edit-product', {
-        title: 'Edit'
-    });
+    res.render('shop/edit-product', { title: 'Edit' });
 });
 router.post('/edit-product/:id', function(req, res, next) {
     console.log(req.body);

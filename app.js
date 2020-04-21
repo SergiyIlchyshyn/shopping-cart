@@ -15,12 +15,6 @@ var validator = require('express-validator');
 
 // Подключаем mongoose
 var mongoose = require('mongoose');
-
-var indexRouters = require('./routes/index');
-var userRoutes = require('./routes/user');
-
-var app = express();
-
 // Для подключения к БД shopping применяем метод connect()
 // mongoose.connect('mongodb://localhost:27017/shopping');
 mongoose.connect('mongodb+srv://student:Start2020@cluster0-qse6h.mongodb.net/sample-database', {
@@ -31,6 +25,11 @@ mongoose.connect('mongodb+srv://student:Start2020@cluster0-qse6h.mongodb.net/sam
     .catch(err => {
         console.log(Error, err.message);
     });
+
+var indexRouters = require('./routes/index');
+var userRoutes = require('./routes/user');
+
+var app = express();
 
 require('./config/passport');
 
