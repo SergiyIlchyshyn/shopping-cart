@@ -6,7 +6,7 @@ var Product = require('../models/product');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     Product.find(function(err, products) {
-        // console.log(docs);
+        // console.log(products);
         // var products = [];
         // if (err) {
         //     // return res.send(err);
@@ -36,12 +36,25 @@ router.post('/add-product', function(req, res, next) {
 });
 //отримати дані і зберегти їх
 router.get('/edit-product/:id', function(req, res, next) {
-    res.render('shop/edit-product', { title: 'Edit' });
+    Product.findById(req.params.id)
+        .then(product => res.render('shop/edit-product', { title: 'Edit', product: product }))
+        .catch(err => {
+            consolo.log(err.message);
+            throw err;
+        })
 });
 router.post('/edit-product/:id', function(req, res, next) {
     console.log(req.body);
     //записати в БД
     res.redirect('/');
+    // Product.findByIdAndUpdate(req.params.id, {
+
+    //     })
+    //     .then()
+    //     .catch(err => {
+    //         consolo.log(err.message);
+    //         throw err;
+    //     });
 });
 router.get('/delete-product/:id', function(req, res, next) {
     console.log(req.params.id);

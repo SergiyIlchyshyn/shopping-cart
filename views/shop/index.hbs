@@ -10,6 +10,11 @@
                         <h5 class="card-title">{{ title }}</h5>
                         <p class="card-text mb-3">{{ description }}</p>
                     </div>
+                    <div class="card-foot mb-3">
+                        <a href="/edit-product/{{_id}}" class="btn btn-warning">Edit</a>
+                        <a href="/add-product" class="btn btn-primary">Create</a>
+                        <a href="/delete-product/{{_id}}" class="btn btn-danger">Delete</a>
+                    </div>
                     <div class="card-foot">
                         <span class="price">${{ price }}</span>
                         <a href="#" class="btn btn-success">Add</a>
