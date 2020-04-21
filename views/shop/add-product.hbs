@@ -1,0 +1,129 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <h4 class="mb-3">Add new product</h4>
+        <form method="POST" role="form">
+            <legend>Product details:</legend>
+            <div class="form-group">
+                <label for="productTitle">Name:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-header" aria-hidden="true"></i></span>
+                    </div>
+                    <input type="text" class="form-control" id="productTitle" name="productTitle" placeholder="Enter name of product">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productDescription">Description:</label>
+                <textarea class="form-control" id="productDescription" name="productDescription" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Price:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-usd" aria-hidden="true"></i>
+                    </div>
+                    <input type="text" class="form-control" id="productPrice" name="productPrice" placeholder="Enter price">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productColor">Color:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-paint-brush" aria-hidden="true"></i>
+                    </div>
+                    <input type="text" class="form-control" id="productColor" name="productColor" placeholder="Enter color of product">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Size:</label>
+                <div class="input-group">
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="sizeXS" name="sizeXS" type="checkbox" class="custom-control-input" value="XS">
+                        <label class="custom-control-label" for="sizeXS" >XS</label>
+                    </div>
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="sizeS" name="sizeS" type="checkbox" class="custom-control-input" value="S">
+                        <label class="custom-control-label" for="sizeS">S</label>
+                    </div>
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="sizeM" name="sizeM" type="checkbox" class="custom-control-input" value="M">
+                        <label class="custom-control-label" for="sizeM">M</label>
+                    </div>
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="sizeL" name="sizeL" type="checkbox" class="custom-control-input" value="L">
+                        <label class="custom-control-label" for="sizeL">L</label>
+                    </div>
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="sizeXL" name="sizeXL" type="checkbox" class="custom-control-input" value="XL">
+                        <label class="custom-control-label" for="sizeXL">XL</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productMaterials">Materials:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-pie-chart" aria-hidden="true"></i>
+                    </div>
+                    <input type="text" class="form-control" id="productMaterials" name="productMaterials" placeholder="Enter materials">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productCountry">Country:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-globe" aria-hidden="true"></i>
+                    </div>
+                    <input type="text" class="form-control" id="productCountry" name="productCountry" placeholder="Enter country">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Availability:</label>
+                <div class="input-group">
+                    <div class="custom-control custom-radio form-check-inline">
+                        <input id="avTrue" name="availability" type="radio" class="custom-control-input">
+                        <label class="custom-control-label" for="avTrue">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio form-check-inline">
+                        <input id="avFalse" name="availability" type="radio" class="custom-control-input">
+                        <label class="custom-control-label" for="avFalse">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Season:</label>
+                <div class="input-group">
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="seasonWinter" name="seasonWinter" type="checkbox" class="custom-control-input" value="Winter">
+                        <label class="custom-control-label" for="seasonWinter">Winter</label>
+                    </div>
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="seasonSpring" name="seasonSpring" type="checkbox" class="custom-control-input" value="Spring">
+                        <label class="custom-control-label" for="seasonSpring">Spring</label>
+                    </div>
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="seasonSummer" name="seasonSummer" type="checkbox" class="custom-control-input" value="Summer">
+                        <label class="custom-control-label" for="seasonSummer">Summer</label>
+                    </div>
+                    <div class="custom-control custom-checkbox form-check-inline">
+                        <input id="seasonAutumn" name="seasonAutumn" type="checkbox" class="custom-control-input" value="Autumn">
+                        <label class="custom-control-label" for="seasonAutumn">Autumn</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productImage">Image URL:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-picture-o" aria-hidden="true"></i>
+                    </div>
+                    <input type="text" class="form-control" id="productImage" name="productImage" placeholder="Enter image URL">
+                </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Add new product</button>
+            <hr class="mb-4">
+        </form>
+    </div>
+</div>
