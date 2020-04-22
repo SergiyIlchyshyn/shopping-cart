@@ -7,20 +7,6 @@ var Product = require('../models/product');
 router.get('/', function(req, res, next) {
     Product.find(function(err, products) {
         // console.log(products);
-        // var products = [];
-        // if (err) {
-        //     // return res.send(err);
-        //     res.send(err);
-        // } else {
-        //     var keys = Object.keys(docs);
-        //     keys.forEach(function(key) {
-        //         products.push(docs[key]);
-        //     });
-        //     res.render('shop/index', { title: 'Shopping Cart', products: products });
-        //     console.log(products);
-        //     // return res.json(docs);
-        // }
-
         res.render('shop/index', { title: 'Women Clothing Store', products: products });
     });
 });
@@ -32,34 +18,69 @@ router.get('/add-product', function(req, res, next) {
 router.post('/add-product', function(req, res, next) {
     console.log(req.body);
     //записати в БД
-    res.redirect('/');
+    let productModel = new Product({
+        imagePath: req.body.imagePath,
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price,
+        color: req.body.color,
+        size: req.body.size,
+        availability: req.body.availability,
+        season: req.body.season,
+        materials: req.body.materials,
+        country: req.body.country
+    });
+    productModel
+        .save()
+        .then(result => res.redirect('/'))
+        .catch(err => {
+            consolo.error(err.message);
+            throw err;
+        });
 });
 //отримати дані і зберегти їх
 router.get('/edit-product/:id', function(req, res, next) {
     Product.findById(req.params.id)
         .then(product => res.render('shop/edit-product', { title: 'Edit', product: product }))
         .catch(err => {
-            consolo.log(err.message);
+            consolo.error(err.message);
             throw err;
         })
 });
 router.post('/edit-product/:id', function(req, res, next) {
-    console.log(req.body);
     //записати в БД
-    res.redirect('/');
-    // Product.findByIdAndUpdate(req.params.id, {
-
-    //     })
-    //     .then()
-    //     .catch(err => {
-    //         consolo.log(err.message);
-    //         throw err;
-    //     });
+    Product.findByIdAndUpdate(req.params.id, {
+            imagePath: req.body.imagePath,
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            color: req.body.color,
+            size: req.body.size,
+            availability: req.body.availability,
+            season: req.body.season,
+            materials: req.body.materials,
+            country: req.body.country
+        })
+        .then(r => {
+            console.log(r);
+            res.redirect('/');
+        })
+        .catch(err => {
+            consolo.error(err.message);
+            throw err;
+        })
 });
 router.get('/delete-product/:id', function(req, res, next) {
-    console.log(req.params.id);
     //видалити
-    res.render('shop/delete-product', { title: 'Delete', message: 'Deleted!' });
+    // res.render('shop/delete-product', { title: 'Delete', message: 'Deleted!' });
+    Product.findByIdAndDelete(req.params.id)
+        .then(p => {
+            res.redirect('/');
+        })
+        .catch(err => {
+            consolo.error(err.message);
+            throw err;
+        })
 });
 
 module.exports = router;

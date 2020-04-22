@@ -19,7 +19,8 @@ var mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost:27017/shopping');
 mongoose.connect('mongodb+srv://student:Start2020@cluster0-qse6h.mongodb.net/sample-database', {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify: false
     })
     .then(() => console.log('DB Connected!'))
     .catch(err => {
