@@ -16,8 +16,7 @@ router.get('/add-product', function(req, res, next) {
 });
 //отримати дані і зберегти їх
 router.post('/add-product', function(req, res, next) {
-    console.log(req.body);
-    //записати в БД
+    // console.log(req.body);  
     let productModel = new Product({
         imagePath: req.body.productImage,
         title: req.body.productTitle,
@@ -30,8 +29,8 @@ router.post('/add-product', function(req, res, next) {
         materials: req.body.productMaterials,
         country: req.body.productCountry
     });
-    productModel
-        .save()
+    //записати в БД
+    productModel.save()
         .then(result => {
             res.redirect('/');
         })
@@ -44,7 +43,7 @@ router.post('/add-product', function(req, res, next) {
 //отримати дані і зберегти їх
 router.get('/edit-product/:id', function(req, res, next) {
     Product.findById(req.params.id)
-        .then(product => res.render('shop/edit-product', { title: 'Edit', product: product }))
+        .then(product => res.render('shop/edit-product', { title: 'Edit - ' + product.title, product: product }))
         .catch(err => {
             consolo.error(err.message);
             throw err;
@@ -65,7 +64,7 @@ router.post('/edit-product/:id', function(req, res, next) {
         materials: req.body.productMaterials,
         country: req.body.productCountry
     };
-    //записати в БД
+    //записати зміни в БД
     Product.findByIdAndUpdate(productId, update)
         .then(result => {
             // console.log(result);
@@ -78,8 +77,7 @@ router.post('/edit-product/:id', function(req, res, next) {
 });
 //==============================================================================
 router.get('/delete-product/:id', function(req, res, next) {
-    //видалити
-    // res.render('shop/delete-product', { title: 'Delete', message: 'Deleted!' });
+    // видалити
     Product.findByIdAndDelete(req.params.id)
         .then(p => {
             res.redirect('/');
