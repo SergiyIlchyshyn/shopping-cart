@@ -11,12 +11,13 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
+var MongoStore = require('connect-mongo')(session);
 
 //MONGOOSE======================================================================================
 var mongoose = require('mongoose');
 // Для подключения к БД shopping применяем метод connect()
-mongoose.connect('mongodb://localhost:27017/shopping', {
-        // mongoose.connect('mongodb+srv://student:Start2020@cluster0-qse6h.mongodb.net/sample-database', {
+// mongoose.connect('mongodb://localhost:27017/shopping', {
+mongoose.connect('mongodb+srv://student:Start2020@cluster0-qse6h.mongodb.net/sample-database', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
@@ -45,22 +46,25 @@ app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//EXPRESS-SESSION==================================================================================
 app.use(validator());
 app.use(cookieParser());
+//EXPRESS-SESSION==================================================================================
 app.use(session({
     secret: 'mysupersecret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { maxAge: 180 * 60 * 1000 }
 }));
-//PASSPORT========================================================================================
 app.use(flash());
+//PASSPORT========================================================================================
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//================================================================================================
 app.use(function(req, res, next) {
     res.locals.login = req.isAuthenticated();
+    res.locals.session = req.session;
     next();
 });
 //================================================================================================
