@@ -16,8 +16,8 @@ var MongoStore = require('connect-mongo')(session);
 //MONGOOSE======================================================================================
 var mongoose = require('mongoose');
 // Для подключения к БД shopping применяем метод connect()
-// mongoose.connect('mongodb://localhost:27017/shopping', {
-mongoose.connect('mongodb+srv://student:Start2020@cluster0-qse6h.mongodb.net/sample-database', {
+mongoose.connect('mongodb://localhost:27017/shopping', {
+        // mongoose.connect('mongodb+srv://student:Start2020@cluster0-qse6h.mongodb.net/sample-database', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
